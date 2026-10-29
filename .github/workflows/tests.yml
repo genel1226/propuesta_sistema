@@ -13,6 +13,11 @@ jobs:
   ci:
     runs-on: ubuntu-latest
 
+    # En CI se usa SQLite (en local/producción el proyecto usa MySQL, ver .env.example).
+    env:
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -32,7 +37,9 @@ jobs:
           node-version: '22'
 
       - name: Setup Application
-        run: composer setup
+        run: |
+          touch database/database.sqlite
+          composer setup
 
       - name: Run CI Checks
         run: composer ci:check

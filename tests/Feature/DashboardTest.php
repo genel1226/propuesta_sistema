@@ -7,10 +7,10 @@ test('guests are redirected to the login page', function () {
     $response->assertRedirect(route('login'));
 });
 
-test('authenticated users can visit the dashboard', function () {
+test('authenticated users are sent from the dashboard to the importer', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
 
-    $response = $this->get(route('dashboard'));
-    $response->assertOk();
+    $this->get(route('dashboard'))->assertRedirect('/importar');
+    $this->get(route('imports.create'))->assertOk()->assertSee('Importar activos');
 });

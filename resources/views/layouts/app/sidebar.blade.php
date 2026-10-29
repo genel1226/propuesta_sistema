@@ -11,9 +11,12 @@
             </flux:sidebar.header>
 
             <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                <flux:sidebar.group heading="Importador CMMS" class="grid">
+                    <flux:sidebar.item icon="arrow-up-tray" :href="route('imports.create')" :current="request()->routeIs('imports.create', 'imports.edit')" wire:navigate>
+                        Importar activos
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="queue-list" :href="route('imports.index')" :current="request()->routeIs('imports.index', 'imports.show')" wire:navigate>
+                        Historial
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
@@ -21,12 +24,8 @@
             <flux:spacer />
 
             <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                </flux:sidebar.item>
-
-                <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
+                <flux:sidebar.item icon="folder-git-2" href="https://github.com/genel1226/propuesta_sistema" target="_blank">
+                    Repositorio
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 

@@ -1,0 +1,5 @@
+# Archivos reales de clientes: NO se suben al repositorio (contienen datos de clientes).
+# Copia aquí los archivos de ejemplo para correr las pruebas de integración.
+*.xlsx
+*.xls
+*.csv
